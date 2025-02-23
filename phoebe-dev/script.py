@@ -12,14 +12,14 @@ def main():
     # the Google APIs Console <http://code.google.com/apis/console>
     # to get an API key for your own application.
     service = build(
-        "customsearch", "v1", developerKey="748ba10aef8b944fa"
+        "customsearch", "v1", developerKey="xx"
     )
 
     res = (
         service.cse()
         .list(
             q="per se",
-            cx="AIzaSyASDjQb1R4dXsi5a49c9UBFtXB8jVNjmD0",
+            cx="xx",
         )
         .execute()
     )
