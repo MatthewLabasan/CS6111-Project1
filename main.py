@@ -115,16 +115,16 @@ def insert_keywords(query, keywords, corpus):
   if len(keywords) > 1:
     # KEYWORD #1
     query_words = new_query.split(" ")
-    for bigram in all_bigrams:
+    for bigram in all_bigrams: # Exits loop once ONE keyword is assigned. If none is found, it'll check again (redundant for now).
       if bigram1_found:
         break
-      # Go through keyword and query start/end combinations
+      # Go through keyword and query start/end combinations. 
       for keyword in keywords:
-        if not bigram1_found and (keyword == bigram[0] and query_words[0] == bigram[1]): # (keyword1, starting query word)
+        if not bigram1_found and (keyword == bigram[0] and query_words[0] == bigram[1]): # Bigram = (keyword1, starting query word) -> Add to start
           new_query = keyword + " " + new_query
           bigram1_found = True
           break
-        elif not bigram1_found and (keyword == bigram[1] and query_words[-1] in bigram[0]): # (ending query word, keyword1)
+        elif not bigram1_found and (keyword == bigram[1] and query_words[-1] in bigram[0]): # Bigram = (ending query word, keyword1) -> Add to end
           new_query = new_query + " " + keyword
           bigram1_found = True
           break
@@ -136,20 +136,22 @@ def insert_keywords(query, keywords, corpus):
         break
       # Go through keyword and query start/end combinations
       for keyword in keywords:
-        if not bigram2_found and (keyword == bigram[0] and query_words[0] == bigram[1]): # (keyword1, starting query word)
+        if not bigram2_found and (keyword == bigram[0] and query_words[0] == bigram[1]): # Bigram = (keyword2, starting query word) -> Add to start
           new_query = keyword + " " + new_query
-          bigram1_found = True
+          bigram2_found = True
           break
-        elif not bigram2_found and (keyword == bigram[1] and query_words[-1] in bigram[0]): # (ending query word, keyword1)
+        elif not bigram2_found and (keyword == bigram[1] and query_words[-1] in bigram[0]): # Bigram = (ending query word, keyword1) -> Add to end
           new_query = new_query + " " + keyword
           bigram2_found = True
           break
   
     # CHECK: If one keyword was not added, Append to end
     if not bigram1_found and bigram2_found:
+      bigram1_found = True # Ensure no more checks go through
       new_query = new_query + " " + keywords[0]
     if not bigram2_found and bigram1_found:
-      new_query = new_query + " " + keyword[1]
+      new_query = new_query + " " + keywords[1]
+      bigram2_found = True
       
     # CHECK: If two keywords not added, check if bigram, reorder the two if needed, then append to end
     if not bigram1_found and not bigram2_found: 
@@ -160,24 +162,19 @@ def insert_keywords(query, keywords, corpus):
           keyword_bigram_found = True
         break
       
-    if not keyword_bigram_found:
-      new_query = new_query + " " + keywords[0] + " " + keywords[1] # No special ordering
+      if not keyword_bigram_found:
+        new_query = new_query + " " + keywords[0] + " " + keywords[1] # No special ordering
+      
   else:
     # If only one keyword present
     query_words = new_query.split(" ")
     for bigram in all_bigrams:
-      if bigram1_found:
+      if not bigram1_found and (keyword == bigram[0] and query_words[0] == bigram[1]): # (keyword1, starting query word)
+        new_query = keyword + " " + new_query
         break
-      # Go through keyword and query start/end combinations
-      for keyword in keywords:
-        if not bigram1_found and (keyword == bigram[0] and query_words[0] == bigram[1]): # (keyword1, starting query word)
-          new_query = keyword + " " + new_query
-          bigram1_found = True
-          break
-        elif not bigram1_found and (keyword == bigram[1] and query_words[-1] in bigram[0]): # (ending query word, keyword1)
-          new_query = new_query + " " + keyword
-          bigram1_found = True
-          break
+      elif not bigram1_found and (keyword == bigram[1] and query_words[-1] in bigram[0]): # (ending query word, keyword1)
+        new_query = new_query + " " + keyword
+        break
     
     # CHECK: If keyword was not added, Append to end
     if not bigram1_found:
@@ -323,8 +320,8 @@ def main():
   
   print("======================")
   print("FEEDBACK SUMMARY")
-  print(f"Query: " + query)
-  print(f"Precision: " + result_precision)
+  print(f"Query: {query}")
+  print(f"Precision: {result_precision}")
   print("Desired precision reached, done")
   
 if __name__ == "__main__":
