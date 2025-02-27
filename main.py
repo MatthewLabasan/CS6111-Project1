@@ -117,19 +117,19 @@ def insert_keywords_v2(query, keywords, corpus):
     sorted_bigrams = sorted(bigram_counts.items(), key=lambda x: x[1], reverse=True)
     
     # Determine best order for keywords
+    if sorted_bigrams:
+      top1, top2 = sorted_bigrams[0]
+      placed_keywords = set()
 
-    top1, top2 = sorted_bigrams[0]
-    placed_keywords = set()
-
-    # if top bigram is 2 keywords
-    if top1 in keywords and top2 in keywords:
-       # append them after a query word if the bigram exists
-       for q in query_words:
-          if (q, top1) in bigram_counts:
-              query_words.insert(query_words.index(q) + 1, top1)
-              query_words.insert(query_words.index(q) + 2, top2)
-              placed_keywords.update([top1, top2])
-              break
+      # if top bigram is 2 keywords
+      if top1 in keywords and top2 in keywords:
+        # append them after a query word if the bigram exists
+        for q in query_words:
+            if (q, top1) in bigram_counts:
+                query_words.insert(query_words.index(q) + 1, top1)
+                query_words.insert(query_words.index(q) + 2, top2)
+                placed_keywords.update([top1, top2])
+                break
     else:
       for (word1, word2), _ in sorted_bigrams:
           if word1 in query_words and word2 in keywords and word2 not in placed_keywords:
@@ -327,15 +327,15 @@ def expand(query, num_keywords, relevant_results, nonrelevant_results):
   # Add keywords to query
   if len(top_relevant_keywords) > 1:
     print("Augmenting by " + top_relevant_keywords[0] + " " + top_relevant_keywords[1])
-    new_query = insert_keywords_v2(query, top_relevant_keywords[0:2], relevant_corpus)
+    new_query = insert_keywords(query, top_relevant_keywords[0:2], relevant_corpus)
   elif len(top_relevant_keywords) == 1:
     print("Augmenting by " + top_relevant_keywords[0])
-    new_query = insert_keywords_v2(query, top_relevant_keywords, relevant_corpus) # Only one elem in array, so no indexing
+    new_query = insert_keywords(query, top_relevant_keywords, relevant_corpus) # Only one elem in array, so no indexing
   else:
     # If no top_relevant_results remaining after pruning, use two lowest scoring nonrelevant document words. THOUGHTS? 
     # (I don't think this is possible if relevancy is marked correctly, but...) 
     print("Augmenting by " + top_nonrelevant_keywords[-2] + " " + top_nonrelevant_keywords[-1])
-    new_query = insert_keywords_v2(query, top_nonrelevant_keywords[-2:], relevant_corpus) # Use relevant corpus for bigram!
+    new_query = insert_keywords(query, top_nonrelevant_keywords[-2:], relevant_corpus) # Use relevant corpus for bigram!
   
   return new_query
 
