@@ -365,6 +365,9 @@ def main():
     if results != None: 
       # Check relevance
       result_precision, relevant_results, nonrelevant_results = user_relevance(results)
+      if result_precision == 0:
+        print("Precision reached 0. Stopping program")
+        break
       if result_precision < goal_precision:
         print("======================")
         print("FEEDBACK SUMMARY")
