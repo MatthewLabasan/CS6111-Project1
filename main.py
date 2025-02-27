@@ -6,6 +6,7 @@ import nltk
 from nltk.util import ngrams
 from nltk.tokenize import word_tokenize
 from nltk import bigrams
+from collections import Counter
 
 nltk.download('punkt_tab')
 
@@ -72,16 +73,77 @@ def user_relevance(results):
     print("]\n")
     
     answer = input("Relevant (Y/N)? ")
-    
-    if answer == "y" or answer == "Y":
-      precision += 1
-      relevant_results.append(pruned_result)
-    else:
-      nonrelevant_results.append(pruned_result)
+
+    valid_responses = ['y', 'n']
+    while True:
+      if answer.lower() in valid_responses:
+        if answer.lower() == 'y':
+          precision += 1
+          relevant_results.append(pruned_result)
+        else:
+          nonrelevant_results.append(pruned_result)
+        break
+      answer = input("Please make sure to input Y or N. Relevant (Y/N)? ")
   
-  precision = precision/10
+  # in case we returned less than 10 docs or 0 docs
+  precision = precision/len(results) if len(results) > 0 else 0
   return precision, relevant_results, nonrelevant_results
 
+def insert_keywords_v2(query, keywords, corpus):
+    """
+    Optimally order new keywords into query by searching for the most frequent bigrams present in the corpus.
+    
+    Args:
+        query (str): Original query
+        keywords (list): Words to append & order into query
+        corpus (list): List of documents (strings)
+    
+    Returns:
+        new_query (str): Updated query
+    """
+    new_query = query
+    query_words = new_query.split(" ")
+    bigram_counts = Counter()
+    
+    # Get bigrams from corpus and count occurrences
+    for document in corpus:
+        tokens = word_tokenize(document)
+        doc_bigrams = list(bigrams(tokens))
+        for bigram in doc_bigrams:
+            if any(word in bigram for word in query_words + keywords):
+                bigram_counts[bigram] += 1
+    
+    # Sort bigrams by count
+    sorted_bigrams = sorted(bigram_counts.items(), key=lambda x: x[1], reverse=True)
+    
+    # Determine best order for keywords
+    if sorted_bigrams:
+      top1, top2 = sorted_bigrams[0]
+      placed_keywords = set()
+
+      # if top bigram is 2 keywords
+      if top1 in keywords and top2 in keywords:
+        # append them after a query word if the bigram exists
+        for q in query_words:
+            if (q, top1) in bigram_counts:
+                query_words.insert(query_words.index(q) + 1, top1)
+                query_words.insert(query_words.index(q) + 2, top2)
+                placed_keywords.update([top1, top2])
+                break
+    else:
+      for (word1, word2), _ in sorted_bigrams:
+          if word1 in query_words and word2 in keywords and word2 not in placed_keywords:
+              query_words.insert(query_words.index(word1) + 1, word2)
+              placed_keywords.add(word2)
+          elif word2 in query_words and word1 in keywords and word1 not in placed_keywords:
+              query_words.insert(query_words.index(word2), word1)
+              placed_keywords.add(word1)
+    
+    for keyword in keywords:
+        if keyword not in placed_keywords:
+            query_words.append(keyword)
+    
+    return " ".join(query_words)
 
 def insert_keywords(query, keywords, corpus):
   """
@@ -179,19 +241,6 @@ def insert_keywords(query, keywords, corpus):
     # CHECK: If keyword was not added, Append to end
     if not bigram1_found:
       new_query = new_query + " " + keywords[0]
-
-  # Idea of this: search if bigrams including the start and end query terms with a keyword. If yes, append to that side. Do not append to middle
-  # as we assume it is correct and wanted by the user. If no bigrams found, try to bigram keywords. Else, append to end.
-
-  # NOTES
-  # Search for bigrams -- we could do a nltk.bigram finder in our corpus, however:
-  # If our keywords were, (New, York), and a bigram result is (York, New) from something like "...York. New...", it would choose this! But wrong.
-  # So, if an earlier, subpar bigram shows up earlier in the all_bigrams list, won't be optimal. Not sure how to fix?
-  # Actually, punctuation will now make (York New), it'd be (York, .)
-  # I was also thinking of doing a thing where if only one word is expanded, then use a bigram to derive a second word, but that 
-  # defeats the whole purpose of removing it if a word is present in nonrelev.
-  # Note: need seperate checks for keyword 1 and 2 to ensure proper indexing when using reorder function. kinda messy but whatever
-  # - See expand() bottom for one possible removal
   
   return new_query
 
