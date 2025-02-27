@@ -3,7 +3,6 @@ from googleapiclient.discovery import build
 from sklearn.feature_extraction.text import TfidfVectorizer
 import numpy as np
 import nltk
-from nltk.util import ngrams
 from nltk.tokenize import word_tokenize
 from nltk import bigrams
 from collections import Counter
@@ -85,7 +84,7 @@ def user_relevance(results):
         break
       answer = input("Please make sure to input Y or N. Relevant (Y/N)? ")
   
-  # in case we returned less than 10 docs or 0 docs
+  # In case we returned less than 10 docs or 0 docs
   precision = precision/len(results) if len(results) > 0 else 0
   return precision, relevant_results, nonrelevant_results
 
@@ -363,7 +362,7 @@ def main():
         # Check Validity
         if not query:
           print("Below desired precision, but can no longer augment the query")
-          break
+          sys.exit(0)
     else: 
       break # Error fetching results
   
