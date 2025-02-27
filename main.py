@@ -82,28 +82,6 @@ def user_relevance(results):
   precision = precision/10
   return precision, relevant_results, nonrelevant_results
 
-def reorder(query_words, index, keyword, bigram):
-  """
-  Reorders keyword into the query if a bigram between a query word and a keyword is present.
-  Does not reorder if a pair of query_words being seperat
-  
-  Args:
-      query_words (list): Query word tokens
-      index (int):  Index of query word in bigram
-      keyword (str): Keyword to add
-      bigram (tuple): Specific ordering of words
-
-  Returns:
-      new_query (str): Updated query
-  """
-  new_query = ""
-  for query_index, query_word in query_words:
-    if query_index == index:
-      new_query += keyword
-    else:
-      new_query += query_word
-      
-  return new_query
 
 def insert_keywords(query, keywords, corpus):
   """
@@ -121,64 +99,94 @@ def insert_keywords(query, keywords, corpus):
   # This variable may change more than once throughout the function
   new_query = query
   
-  # Status of search for each keyword
+  # Status of bigram search for each keyword & final check
   bigram1_found = False
   bigram2_found = False
+  keyword_bigram_found = False
   
   # Get bigrams from corpus
   all_bigrams = []
   for document in corpus:
-    # Note: word_tokenize considers punctuation, which is fine as this will help remove unrealistic bigrams
-    # Ex. "Pepperoni pizza, coffee" (pizza, ,) vs (pizza, coffee)
+    # Word_tokenize considers punctuation, removing non-word bigrams
     tokens = word_tokenize(document)
     all_bigrams += list(bigrams(tokens))
   
-   # Check if a keyword and query term is a bigram
+   # Check if a keyword and start/end query term is a bigram. Assumes original query has good ordering, so no middle placements!
   if len(keywords) > 1:
-    # Keyword #1
+    # KEYWORD #1
     query_words = new_query.split(" ")
     for bigram in all_bigrams:
       if bigram1_found:
         break
-      # Go through all query and keyword combinations
-      for index, query_word in enumerate(query_words):
-        if not bigram1_found and (keywords[0] in bigram and query_word in bigram):
-          new_query = reorder(query_words, index, keywords[0], bigram)
+      # Go through keyword and query start/end combinations
+      for keyword in keywords:
+        if not bigram1_found and (keyword == bigram[0] and query_words[0] == bigram[1]): # (keyword1, starting query word)
+          new_query = keyword + " " + new_query
+          bigram1_found = True
+          break
+        elif not bigram1_found and (keyword == bigram[1] and query_words[-1] in bigram[0]): # (ending query word, keyword1)
+          new_query = new_query + " " + keyword
           bigram1_found = True
           break
     
-    # Keyword #2
+    # KEYWORD #2
     query_words = new_query.split(" ") # Redo incase query was updated
     for bigram in all_bigrams:
       if bigram2_found:
         break
-      # Go through all query and keyword combinations
-      for index, query_word in enumerate(query_words):
-        if not bigram2_found and keywords[1] in bigram and query_word in bigram:
-          new_query = reorder(query_words, index, keywords[1], bigram)
+      # Go through keyword and query start/end combinations
+      for keyword in keywords:
+        if not bigram2_found and (keyword == bigram[0] and query_words[0] == bigram[1]): # (keyword1, starting query word)
+          new_query = keyword + " " + new_query
+          bigram1_found = True
+          break
+        elif not bigram2_found and (keyword == bigram[1] and query_words[-1] in bigram[0]): # (ending query word, keyword1)
+          new_query = new_query + " " + keyword
           bigram2_found = True
           break
+  
+    # CHECK: If one keyword was not added, Append to end
+    if not bigram1_found and bigram2_found:
+      new_query = new_query + " " + keywords[0]
+    if not bigram2_found and bigram1_found:
+      new_query = new_query + " " + keyword[1]
       
-    # Check if two keywords is a bigram (switch to more optimal order if not added in already)
+    # CHECK: If two keywords not added, check if bigram, reorder the two if needed, then append to end
     if not bigram1_found and not bigram2_found: 
       for bigram in all_bigrams:
         if keywords[0] in bigram and keywords[1] in bigram:
           keywords = list(bigram)
-          new_query = new_query + " " + keywords[0] + + " " + keywords[1] 
+          new_query = new_query + " " + keywords[0] + " " + keywords[1] 
+          keyword_bigram_found = True
         break
+      
+    if not keyword_bigram_found:
+      new_query = new_query + " " + keywords[0] + " " + keywords[1] # No special ordering
   else:
     # If only one keyword present
+    query_words = new_query.split(" ")
     for bigram in all_bigrams:
-      if bigram1_found == True:
+      if bigram1_found:
         break
-      # Go through all query and keyword combinations
-      for index, query_word in enumerate(query_words):
-        if not bigram1_found and (keywords[0] in bigram and query_word in bigram):
-          new_query = reorder(query_words, index, keywords[0], bigram)
+      # Go through keyword and query start/end combinations
+      for keyword in keywords:
+        if not bigram1_found and (keyword == bigram[0] and query_words[0] == bigram[1]): # (keyword1, starting query word)
+          new_query = keyword + " " + new_query
           bigram1_found = True
           break
+        elif not bigram1_found and (keyword == bigram[1] and query_words[-1] in bigram[0]): # (ending query word, keyword1)
+          new_query = new_query + " " + keyword
+          bigram1_found = True
+          break
+    
+    # CHECK: If keyword was not added, Append to end
+    if not bigram1_found:
+      new_query = new_query + " " + keywords[0]
 
-  
+  # Idea of this: search if bigrams including the start and end query terms with a keyword. If yes, append to that side. Do not append to middle
+  # as we assume it is correct and wanted by the user. If no bigrams found, try to bigram keywords. Else, append to end.
+
+  # NOTES
   # Search for bigrams -- we could do a nltk.bigram finder in our corpus, however:
   # If our keywords were, (New, York), and a bigram result is (York, New) from something like "...York. New...", it would choose this! But wrong.
   # So, if an earlier, subpar bigram shows up earlier in the all_bigrams list, won't be optimal. Not sure how to fix?
@@ -186,10 +194,9 @@ def insert_keywords(query, keywords, corpus):
   # I was also thinking of doing a thing where if only one word is expanded, then use a bigram to derive a second word, but that 
   # defeats the whole purpose of removing it if a word is present in nonrelev.
   # Note: need seperate checks for keyword 1 and 2 to ensure proper indexing when using reorder function. kinda messy but whatever
+  # - See expand() bottom for one possible removal
   
-  query = query + ", KEYWORDS: " + keywords[0] + ", " + keywords[1]
-  print(query)
-
+  return new_query
 
 def expand(query, num_keywords, relevant_results, nonrelevant_results):
   """
@@ -210,15 +217,15 @@ def expand(query, num_keywords, relevant_results, nonrelevant_results):
   top_relevant_keywords = []
   top_nonrelevant_keywords = []
   expansion_keywords = []
-  current_query_words = query.split(" ")
+  current_query_words = query.lower().split(" ") # Standardize word
   
   print("Indexing results ....")
   
   # Build document corpus' and 
   for result in relevant_results:
-    relevant_corpus.append(result["title"] + ", " + result["snippet"]) # Format: "Title, Snippet"
+    relevant_corpus.append(result["title"] + " " + result["snippet"]) # Format: "Title Snippet"
   for result in nonrelevant_results:
-    nonrelevant_corpus.append(result["title"] + ", " + result["snippet"]) 
+    nonrelevant_corpus.append(result["title"] + " " + result["snippet"]) 
 
   if relevant_results: 
     # Obtain Tfidf scores averaged across relevant documents
@@ -229,8 +236,9 @@ def expand(query, num_keywords, relevant_results, nonrelevant_results):
     sorted_indices = np.argsort(tfidf_scores)[::-1] # Indexes of feature_names
     
     for i in sorted_indices:
-        if feature_names[i] not in current_query_words:
-            top_relevant_keywords.append(feature_names[i])
+        feature_name_lower = feature_names[i].lower() # Standardize
+        if feature_name_lower not in current_query_words:
+            top_relevant_keywords.append(feature_name_lower)
         if (len(top_relevant_keywords) == num_keywords):
             break
   else:
@@ -246,8 +254,9 @@ def expand(query, num_keywords, relevant_results, nonrelevant_results):
     sorted_indices = np.argsort(tfidf_scores)[::-1] # Indexes of feature_names
     
     for i in sorted_indices:
-        if feature_names[i] not in current_query_words:
-            top_nonrelevant_keywords.append(feature_names[i])
+        feature_name_lower = feature_names[i].lower() # Standardize
+        if feature_name_lower not in current_query_words:
+            top_nonrelevant_keywords.append(feature_name_lower)
         if (len(top_nonrelevant_keywords) == num_keywords):
             break
           
@@ -262,7 +271,7 @@ def expand(query, num_keywords, relevant_results, nonrelevant_results):
     new_query = insert_keywords(query, top_relevant_keywords[0:2], relevant_corpus)
   elif len(top_relevant_keywords) == 1:
     print("Augmenting by " + top_relevant_keywords[0])
-    new_query = insert_keywords(query, top_relevant_keywords[0], relevant_corpus)
+    new_query = insert_keywords(query, top_relevant_keywords, relevant_corpus) # Only one elem in array, so no indexing
   else:
     # If no top_relevant_results remaining after pruning, use two lowest scoring nonrelevant document words. THOUGHTS? 
     # (I don't think this is possible if relevancy is marked correctly, but...) 
@@ -298,6 +307,9 @@ def main():
       # Check relevance
       result_precision, relevant_results, nonrelevant_results = user_relevance(results)
       if result_precision < goal_precision:
+        print("======================")
+        print("FEEDBACK SUMMARY")
+        print(f"Query: {query}")
         print(f"Precision: {result_precision}")
         print(f"Still below the desired precision of {goal_precision}")
         query = expand(query, 2, relevant_results, nonrelevant_results)
@@ -308,6 +320,12 @@ def main():
           break
     else: 
       break # Error fetching results
+  
+  print("======================")
+  print("FEEDBACK SUMMARY")
+  print(f"Query: " + query)
+  print(f"Precision: " + result_precision)
+  print("Desired precision reached, done")
   
 if __name__ == "__main__":
   main()
