@@ -241,19 +241,6 @@ def insert_keywords(query, keywords, corpus):
     # CHECK: If keyword was not added, Append to end
     if not bigram1_found:
       new_query = new_query + " " + keywords[0]
-
-  # Idea of this: search if bigrams including the start and end query terms with a keyword. If yes, append to that side. Do not append to middle
-  # as we assume it is correct and wanted by the user. If no bigrams found, try to bigram keywords. Else, append to end.
-
-  # NOTES
-  # Search for bigrams -- we could do a nltk.bigram finder in our corpus, however:
-  # If our keywords were, (New, York), and a bigram result is (York, New) from something like "...York. New...", it would choose this! But wrong.
-  # So, if an earlier, subpar bigram shows up earlier in the all_bigrams list, won't be optimal. Not sure how to fix?
-  # Actually, punctuation will now make (York New), it'd be (York, .)
-  # I was also thinking of doing a thing where if only one word is expanded, then use a bigram to derive a second word, but that 
-  # defeats the whole purpose of removing it if a word is present in nonrelev.
-  # Note: need seperate checks for keyword 1 and 2 to ensure proper indexing when using reorder function. kinda messy but whatever
-  # - See expand() bottom for one possible removal
   
   return new_query
 
