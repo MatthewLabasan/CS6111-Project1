@@ -43,7 +43,6 @@ def search(GSAPI, GSEID, query) -> dict:
   
   return res
 
-
 def user_relevance(results):
   """
   Check Relevance for 10 Documents, returning nonrelevant and relevant document information
@@ -284,8 +283,6 @@ def expand(query, num_keywords, relevant_results, nonrelevant_results):
         feature_name_lower = feature_names[i].lower() # Standardize
         if feature_name_lower not in current_query_words:
             top_relevant_keywords.append(feature_name_lower)
-        if (len(top_relevant_keywords) == num_keywords):
-            break
   else:
     # If no relevant results, end
     return None
@@ -302,8 +299,6 @@ def expand(query, num_keywords, relevant_results, nonrelevant_results):
         feature_name_lower = feature_names[i].lower() # Standardize
         if feature_name_lower not in current_query_words:
             top_nonrelevant_keywords.append(feature_name_lower)
-        if (len(top_nonrelevant_keywords) == num_keywords):
-            break
           
   # Prune top_nonrelevant_keywords from top_relevant_keywords list. Ensures query won't include nonrelevant terms.
   for keyword in top_relevant_keywords:
