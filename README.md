@@ -14,7 +14,7 @@
 # Introduction
 This project is an exploration on query expansion utilizing the Google Custom Search API. With this project, we learned about possible methods of query expansion through word scoring equations such as tf-idf, word placement algorithms using bigrams, and the use of user relevance feedback. It was built for Project 1 of COMS6111 - Advanced Database Systems.
 
-Developed by Matthew Labasan and Phoebe Tang
+Developed by Matthew Labasan and Phoebe Tang.
 
 # Getting Started
 ## Prerequisites
