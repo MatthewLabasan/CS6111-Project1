@@ -40,14 +40,14 @@ Here, we will outline our `main()` method:
 1. Extract the arguments to obtain the search engine ID, API key, precision, and query
 2. Enter a loop. The program calls the Google Custom Search API to retrieve search results for a given query. This method is defined as `search()`
     - It uses the build function from googleapiclient.discovery
-    - Makes a request to see cse().list() with given engine ID
+    - Makes a request to see `cse().list()` with given engine ID
     - Returns a dictionary of the top 10 query results
     - Source Code via [Google](https://github.com/googleapis/google-api-python-client/blob/main/samples/customsearch/main.py)
-3. Then, call the user_relevance() function to collect user feedback 
+3. Then, call the `user_relevance()` function to collect user feedback 
     - Iterate through top 10 results and display dictionary content
     - Store relevant and irrelevant documents in separate lists
     - Calculate the precision score and return the score, relevant, and irrelevant lists
-4. Next, call our expand() and insert_keywords() functions to find new keywords and insert them into the new query
+4. Next, call our `expand()`and `insert_keywords()` functions to find new keywords and insert them into the new query
     - More details below in query-modification
 5. Until target precision is reached, repeat steps 1-4 with the new query
     - Break loop if precision exceeds or equals the target precision
@@ -68,10 +68,10 @@ Our query-expansion algorithm is based on the tf-idf scoring system. The tf-idf 
     - We then prune the top nonrelevant keywords from the top relevant keywords list to make sure that we won’t include any nonrelevant keywords in the new query
     - We then call our insert keywords function to reorder the new query
 
-Our query-word order algorithm is based on the use of bigrams that are present in the relevant document corpus. We worked on two versions of reordering the query – functions insert_keywords and insert_keywords_v2. We ended up using insert_keywords but left the insert_keywords_v2 function for reference
-1. insert_keywords:
+Our query-word order algorithm is based on the use of bigrams that are present in the relevant document corpus. We worked on two versions of reordering the query – functions insert_keywords and insert_keywords_v2. We ended up using `insert_keywords` but left the `insert_keywords_v2` function for reference
+1. `insert_keywords`:
     This method will insert keywords based on present bigrams. Keywords will only be inserted at the start or end of the query since it is assumed that the original user query is in the correct order (we don’t want to risk modification of this order). The logic is below:
-    - We get all the bigrams from the document corpus provided (relevant corpus) using the nltk library – methods word_tokenize() and bigrams(). It is worthy to note that the word_tokenize()method does not ignore punctuation.
+    - We get all the bigrams from the document corpus provided (relevant corpus) using the nltk library – methods `word_tokenize()` and `bigrams()`. It is worthy to note that the `word_tokenize()` method does not ignore punctuation.
     - If we have more than 1 keyword:
         - Check for bigrams between each keyword and the start and end query terms. For example, for query “hello world” and keywords (why, there), we would search for the bigrams: (why, hello), (world, why), etc.
         - If a bigram is present, we place the keyword at either the start or end of the existing query, depending on the found bigram.
@@ -81,7 +81,7 @@ Our query-word order algorithm is based on the use of bigrams that are present i
     - If there is only 1 keyword:
         - Check if it has a bigram with the start or end word of the query
         - Append it in the proper place if so. Else, append it to the end of the query.
-2. insert_keywords_v2: 
+2. `insert_keywords_v2`: 
     - We use counter from collections to keep track of the occurrences for bigrams
     - Iterate through all of the documents from the corpus and update the occurrence of each bigram accordingly.
     - We then sort the bigrams by number of occurrences in decreasing order
