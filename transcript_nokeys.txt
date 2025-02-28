@@ -1,0 +1,777 @@
+QUERY TEST #1 
+
+    (venv) (base) matthewlabasan@Matthews-MacBook-Air-57 CS6111-Project1 % python main.py GOOGLEAPIKEY ENGINEKEY 0.9 "per se"
+    [nltk_data] Downloading package punkt_tab to
+    [nltk_data]     /Users/matthewlabasan/nltk_data...
+    [nltk_data]   Package punkt_tab is already up-to-date!
+    Parameters:
+        Client key:  = GOOGLEAPIKEY
+        ENGINEKEY:  = ENGINEKEY
+        Query:       = per se
+        Precision:   = 0.9
+        
+    Google Search Results:
+    ======================
+    Result 1
+    [
+    url: https://www.thomaskeller.com/perseny
+    title: Per Se | Thomas Keller Restaurant Group
+    snippet: Per Se. Per Se Front Door. center. Michelin; Les Grandes; Relias. About. About; Restaurant · Team · Info & Directions · Gift Experiences · Reservations; Menus & ...
+    ]
+
+    Relevant (Y/N)? Y
+    Result 2
+    [
+    url: https://www.merriam-webster.com/dictionary/perse
+    title: PERSE Definition & Meaning - Merriam-Webster
+    snippet: The meaning of PERSE is of a dark grayish blue resembling indigo. How to use perse in a sentence. Did you know?
+    ]
+
+    Relevant (Y/N)? N
+    Result 3
+    [
+    url: https://www.thomaskeller.com/new-york-new-york/per-se/todays-menus
+    title: Today's Menus | Thomas Keller Restaurant Group
+    snippet: Per Se. Daily Menus. Two tasting menus are offered daily: a nine-course chef's tasting menu, as well as a ... Per Se . Complete your gift to make an impact.
+    ]
+
+    Relevant (Y/N)? Y
+    Result 4
+    [
+    url: https://www.instagram.com/perseny/?hl=en
+    title: Per Se (@perseny) • Instagram photos and videos
+    snippet: Welcome a new season in New York City with an evening at Per Se. Reservations for the month of March are now available. Join us in the dining room for our ...
+    ]
+
+    Relevant (Y/N)? Y
+    Result 5
+    [
+    url: https://www.reddit.com/r/grammar/comments/otxmm7/how_does_one_use_per_se/
+    title: How does one use 'per se'? : r/grammar
+    snippet: Jul 29, 2021 ... Comments Section ... It roughly means "by itself”, “in itself” or “of itself” and is often used with a negative statement followed by a but to ...
+    ]
+
+    Relevant (Y/N)? N
+    Result 6
+    [
+    url: https://www.nytimes.com/2004/09/08/dining/the-magic-of-napa-with-urban-polish.html
+    title: The Magic of Napa With Urban Polish - The New York Times
+    snippet: Sep 8, 2004 ... Frank Bruni reviews Per Se, Thomas Keller's restaurant at Time Warner Center; photos (L)
+    ]
+
+    Relevant (Y/N)? Y
+    Result 7
+    [
+    url: https://en.wikipedia.org/wiki/Per_se
+    title: Per se - Wikipedia
+    snippet: a primary topic, and an article needs to be written about it. It is believed to qualify as a broad-concept article.
+    ]
+
+    Relevant (Y/N)? N
+    Result 8
+    [
+    url: https://guide.michelin.com/us/en/new-york-state/new-york/restaurant/per-se
+    title: Per Se – New York - a MICHELIN Guide Restaurant
+    snippet: Per Se ... An experience at Thomas Keller's Per Se is one to be savored, recounted and remembered. Despite stellar views and a clever design allowing each table a ...
+    ]
+
+    Relevant (Y/N)? Y
+    Result 9
+    [
+    url: https://readable.com/blog/how-to-correctly-use-per-se/
+    title: Per se meaning, how to use per se in a sentence | Readable ...
+    snippet: Aug 11, 2017 ... 'Per se' is a Latin term which literally means, “by itself”, “in itself” or “of itself”. This means you're taking something out of its context to describe it ...
+    ]
+
+    Relevant (Y/N)? N
+    Result 10
+    [
+    url: https://www.jamesperse.com/
+    title: James Perse Los Angeles
+    snippet: James Perse. Women. Women; Apparel. Apparel Main Menu; New Arrivals · At Home Essentials · Classics · Dresses/Jumpsuits · Sweaters/Cashmere · T-shirts.
+    ]
+
+    Relevant (Y/N)? N
+    ======================
+    FEEDBACK SUMMARY
+    Query: per se
+    Precision: 0.5
+    Still below the desired precision of 0.9
+    Indexing results ....
+    Augmenting by menus restaurant
+    Parameters:
+        Client key:  = GOOGLEAPIKEY
+        ENGINEKEY:  = ENGINEKEY
+        Query:       = per se menus restaurant
+        Precision:   = 0.9
+        
+    Google Search Results:
+    ======================
+    Result 1
+    [
+    url: https://www.thomaskeller.com/new-york-new-york/per-se/todays-menus
+    title: Today's Menus | Thomas Keller Restaurant Group
+    snippet: Private Dining & Events · Per Se. Daily Menus. Two tasting menus are offered daily: a nine-course chef's tasting menu, as well as a nine-course vegetable ...
+    ]
+
+    Relevant (Y/N)? Y
+    Result 2
+    [
+    url: https://www.tripadvisor.com/Restaurant_Review-g60763-d425628-Reviews-Per_Se-New_York_City_New_York.html
+    title: PER SE, New York City - Hell's Kitchen - Menu, Prices & Restaurant ...
+    snippet: An experience at Thomas Keller's Per Se is one to be savored, recounted and remembered. Despite stellar views and a clever design allowing each table a
+    ]
+
+    Relevant (Y/N)? Y
+    Result 3
+    [
+    url: https://www.thomaskeller.com/perseny
+    title: Per Se | Thomas Keller Restaurant Group
+    snippet: Restaurant · Team · Info & Directions · Gift Experiences · Reservations; Menus & Stories. Menus & Stories; Daily Menus · Farmers & Foragers. Wine & Cocktails.
+    ]
+
+    Relevant (Y/N)? Y
+    Result 4
+    [
+    url: https://www.thelotimes.com/p/per-se-french-laundry-price-hike-thomas-keller
+    title: Per Se's Longest Tasting Is Now $1,000! - by ryan sutton
+    snippet: Jan 6, 2025 ... The Napa Valley and Manhattan restaurants boosted the price of their standard tasting menus by $35 in the new year.
+    ]
+
+    Relevant (Y/N)? Y
+    Result 5
+    [
+    url: https://pointsmilesandbling.com/nyc-per-se-tasting-menu/
+    title: Per Se tasting menu delivers on its 3-Michelin Stars reputation ...
+    snippet: May 4, 2024 ... There are two menus, a traditional tasting menu and a vegetarian option, which cost the same, $390 USD (includes gratuity) + tax.
+    ]
+
+    Relevant (Y/N)? Y
+    Result 6
+    [
+    url: https://ny.eater.com/2021/7/21/22583671/per-se-masa-raise-tasting-menu-prices-800
+    title: Per Se and Masa Both Raise Prices of Tasting Menu to $800 - Eater ...
+    snippet: Jul 21, 2021 ... New tasting menu options at NYC restaurants Masa and Per Se could easily push the price of dinner for two past $2000.
+    ]
+
+    Relevant (Y/N)? Y
+    Result 7
+    [
+    url: https://www.reddit.com/r/finedining/comments/1dyojt9/per_se_nyc/
+    title: Per Se (***) NYC : r/finedining
+    snippet: Jul 9, 2024 ... The vibe was great, not too stuffy and the staff were great. Did the tasting menu and a Somm crafted wine pairing for each dish.
+    ]
+
+    Relevant (Y/N)? Y
+    Result 8
+    [
+    url: https://www.exploretock.com/perse
+    title: Per Se - New York, NY | Tock
+    snippet: The restaurant is Chef Keller's second three-Michelin-starred property featuring Chef's tasting menu and a vegetable tasting menu using classic French ...
+    ]
+
+    Relevant (Y/N)? Y
+    Result 9
+    [
+    url: https://www.jamesperse.com/
+    title: James Perse Los Angeles
+    snippet: James Perse. Women. Women; Apparel. Apparel Main Menu; New Arrivals · At Home Essentials · Classics · Dresses/Jumpsuits · Sweaters/Cashmere · T-shirts.
+    ]
+
+    Relevant (Y/N)? N
+    Result 10
+    [
+    url: https://www.reddit.com/r/finedining/comments/xcur1p/dinner_at_3star_per_se_in_nyc_what_am_i_missing/
+    title: Dinner at 3-star Per Se in NYC - What am I missing?? : r/finedining
+    snippet: Sep 13, 2022 ... There is no wine pairing but if you'd like to opt for one, it is $355 and they will bring you "whichever wines they think will go well with the ...
+    ]
+
+    Relevant (Y/N)? Y
+    ======================
+    FEEDBACK SUMMARY
+    Query: per se menus restaurant
+    Precision: 0.9
+    Desired precision reached, done
+
+
+
+QUERY TEST #2
+
+    (venv) (base) matthewlabasan@Matthews-MacBook-Air-57 CS6111-Project1 % python main.py GOOGLEAPIKEY ENGINEKEY 0.9 "wojcicki"
+    [nltk_data] Downloading package punkt_tab to
+    [nltk_data]     /Users/matthewlabasan/nltk_data...
+    [nltk_data]   Package punkt_tab is already up-to-date!
+    Parameters:
+        Client key:  = GOOGLEAPIKEY
+        ENGINEKEY:  = ENGINEKEY
+        Query:       = wojcicki
+        Precision:   = 0.9
+        
+    Google Search Results:
+    ======================
+    Result 1
+    [
+    url: https://en.wikipedia.org/wiki/Susan_Wojcicki
+    title: Susan Wojcicki - Wikipedia
+    snippet: an American business executive who was the chief executive officer of YouTube from 2014 to 2023. Her net worth was estimated at $765 million in 2022.
+    ]
+
+    Relevant (Y/N)? N
+    Result 2
+    [
+    url: https://www.reddit.com/r/poland/comments/3bihro/susan_wojcicki_youtube_ceo_teaches_how_to/
+    title: Susan Wojcicki (YouTube CEO) teaches how to pronounce her ...
+    snippet: Jun 29, 2015 ... She's combining Polish and English pronunciation of her last name. She combines the "j" and "c" initially, and then provides the Polish version of "c" as "ts".
+    ]
+
+    Relevant (Y/N)? N
+    Result 3
+    [
+    url: https://x.com/susanwojcicki?lang=en
+    title: Susan Wojcicki (@SusanWojcicki) / X
+    snippet: Susan Wojcicki's posts ... 's team and innovative solutions in sustainability and security to enable transparency and accountability for countries, communities ...
+    ]
+
+    Relevant (Y/N)? N
+    Result 4
+    [
+    url: https://blog.youtube/inside-youtube/a-personal-update-from-susan/
+    title: A personal update from Susan - YouTube Blog
+    snippet: A personal update from Susan. By Susan Wojcicki. Feb 16, 2023 – 3 minute read. Copy link. A personal update from Susan on stepping back from her role as CEO ...
+    ]
+
+    Relevant (Y/N)? N
+    Result 5
+    [
+    url: https://x.com/annewoj23?lang=en
+    title: Anne Wojcicki (@annewoj23) / X
+    snippet: CEO and Co-Founder, 23andMe.
+    ]
+
+    Relevant (Y/N)? Y
+    Result 6
+    [
+    url: https://www.instagram.com/susanwojcicki/?hl=en
+    title: Susan Wojcicki (@susanwojcicki) • Instagram photos and videos
+    snippet: YouTube CEO · Photo shared by YouTube for Families on May 27, 2022 tagging @susanwojcicki. Say hello to @susanwojcicki, the CEO of @YouTube. · Photo shared by ...
+    ]
+
+    Relevant (Y/N)? N
+    Result 7
+    [
+    url: https://www.facebook.com/esther.wojcicki/posts/it-is-with-soul-crushing-grief-that-i-announce-the-passing-of-my-daughter-susan-/10162259101335763/
+    title: Esther Wojcicki - It is with soul crushing grief that I... | Facebook
+    snippet: Aug 10, 2024 ... It is with soul crushing grief that I announce the passing of my daughter Susan. I am eternally grateful she was in my life.
+    ]
+
+    Relevant (Y/N)? N
+    Result 8
+    [
+    url: https://www.instagram.com/heywoj/?hl=en
+    title: Esther Wojcicki (@heywoj) • Instagram photos and videos
+    snippet: 8216 Followers, 1802 Following, 2042 Posts - Esther Wojcicki (@heywoj) on Instagram: " Author of How to Raise Successful People, Chief Education Advisor ...
+    ]
+
+    Relevant (Y/N)? N
+    Result 9
+    [
+    url: https://www.linkedin.com/in/ed-wojcicki-bb02abb
+    title: Ed Wojcicki - Retired... but Consulting and Writing - Retired | LinkedIn
+    snippet: Steven Berry. “Ed Wojcicki is a keen listener and intelligent articulator of current circumstances and situations. His ability to discern needs and respond ...
+    ]
+
+    Relevant (Y/N)? N
+    Result 10
+    [
+    url: https://physics.stanford.edu/news/professor-stanley-wojcicki-has-died-age-86
+    title: Professor Stanley Wojcicki has died at age 86 | Physics Department
+    snippet: Jun 5, 2023 ... Stanley G. Wojcicki died on May 31, 2023, at his condo in Los Altos at age 86. He still maintained his home on the Stanford campus.
+    ]
+
+    Relevant (Y/N)? N
+    ======================
+    FEEDBACK SUMMARY
+    Query: wojcicki
+    Precision: 0.1
+    Still below the desired precision of 0.9
+    Indexing results ....
+    Augmenting by founder annewoj23
+    Parameters:
+        Client key:  = GOOGLEAPIKEY
+        ENGINEKEY:  = ENGINEKEY
+        Query:       = wojcicki founder annewoj23
+        Precision:   = 0.9
+        
+    Google Search Results:
+    ======================
+    Result 1
+    [
+    url: https://x.com/annewoj23?lang=en
+    title: Anne Wojcicki (@annewoj23) / X
+    snippet: CEO and Co-Founder, 23andMe.
+    ]
+
+    Relevant (Y/N)? Y
+    Result 2
+    [
+    url: https://www.instagram.com/annewoj23/?hl=en
+    title: Anne Wojcicki (@annewoj23) • Instagram photos and videos
+    snippet: @23andme CEO Co-Founder | Think Big | Lead With Science | I ❤️ DNA| https://katiecouric.com/health/cancer/lung-cancer-awareness-month/.
+    ]
+
+    Relevant (Y/N)? Y
+    Result 3
+    [
+    url: https://www.facebook.com/photo.php?fbid=1061818575303832&id=100044270987823&set=a.287245546094476
+    title: Katie Couric - I was absolutely heartbroken to wake up to the news ...
+    snippet: Aug 10, 2024 ... ... annewoj23 is the founder and CEO of @23andme and her sister @Janet ... Wojcicki, a prominent journalist who was closely connected to ...
+    ]
+
+    Relevant (Y/N)? Y
+    Result 4
+    [
+    url: https://www.instagram.com/drcaseyskitchen/p/DBennUeycCN/?hl=en
+    title: Main Stage at @hlthevents yesterday in Vegas alongside wonderful ...
+    snippet: Oct 23, 2024 ... ... annewoj23 and @darshanshahmd. 12000 attendees at this conference - it's ... Anne Wojcicki – CEO and Co-Founder, 23andMe. Maria Shriver ...
+    ]
+
+    Relevant (Y/N)? Y
+    Result 5
+    [
+    url: https://en.wikipedia.org/wiki/Anne_Wojcicki
+    title: Anne Wojcicki - Wikipedia
+    snippet: Anne E. Wojcicki is an American entrepreneur who co-founded and is CEO of the personal genomics company 23andMe. She founded the company in 2006 with Linda ...
+    ]
+
+    Relevant (Y/N)? Y
+    Result 6
+    [
+    url: https://www.facebook.com/katiecouric/posts/i-was-absolutely-heartbroken-to-wake-up-to-the-news-that-susanwojcicki-had-passe/1061818588637164/
+    title: Katie Couric - I was absolutely heartbroken to wake up to... | Facebook
+    snippet: Aug 10, 2024 ... Susan's sister @annewoj23 is the founder and CEO of @23andme and her ... Wojcicki, a prominent physicist who taught at Stanford. I met ...
+    ]
+
+    Relevant (Y/N)? N
+    Result 7
+    [
+    url: https://www.siliconvalley.com/2018/04/05/dying-friend-of-anne-wojcicki-gets-help-from-stanford-after-the-23andme-founder-shamed-the-medical-center/
+    title: Dying friend of Anne Wojcicki gets help — after the 23andMe ...
+    snippet: Apr 5, 2018 ... 23andMe founder Anne Wojcicki took to Twitter to help her dying ... Anne Wojcicki (@annewoj23) April 3, 2018. They were shots heard ...
+    ]
+
+    Relevant (Y/N)? Y
+    Result 8
+    [
+    url: https://abcnews.go.com/Business/anne-wojcicki-ceo-23andme-shares-advice-entrepreneurs-overcoming/story?id=54587273
+    title: Anne Wojcicki, CEO of 23andMe, shares advice for entrepreneurs ...
+    snippet: Apr 19, 2018 ... The 44-year-old mother of two who runs the consumer genetics and research company 23andMe, reportedly valued at over $1 billion, prefers a uniform of Lululemon ...
+    ]
+
+    Relevant (Y/N)? Y
+    Result 9
+    [
+    url: https://www.businessinsider.com/23andme-ceo-anne-wojcicki-life-career-family-photos-2021-3
+    title: 23andMe CEO Anne Wojcicki: the Ex-Wife of Sergey Brin's Life and ...
+    snippet: Feb 18, 2023 ... Anne Wojcicki co-founded the genetic testing company 23andMe in 2006, and took the company public in June 2021 through a merger with a special purpose ...
+    ]
+
+    Relevant (Y/N)? Y
+    Result 10
+    [
+    url: https://www.thefounderhour.com/episodes/anne-wojcicki-23andme
+    title: Anne Wojcicki: 23andMe — The Founder Hour | Podcast
+    snippet: May 23, 2023 ... In 2006, Anne saw a need for creating a way to generate more personalized information so that commercial and academic researchers could better ...
+    ]
+
+    Relevant (Y/N)? Y
+    ======================
+    FEEDBACK SUMMARY
+    Query: wojcicki founder annewoj23
+    Precision: 0.9
+    Desired precision reached, done
+
+
+QUERY TEST #3
+
+    (venv) (base) matthewlabasan@Matthews-MacBook-Air-57 CS6111-Project1 % python main.py GOOGLEAPIKEY ENGINEKEY 0.9 "milky way"
+    [nltk_data] Downloading package punkt_tab to
+    [nltk_data]     /Users/matthewlabasan/nltk_data...
+    [nltk_data]   Package punkt_tab is already up-to-date!
+    Parameters:
+        Client key:  = GOOGLEAPIKEY
+        ENGINEKEY:  = ENGINEKEY
+        Query:       = milky way
+        Precision:   = 0.9
+        
+    Google Search Results:
+    ======================
+    Result 1
+    [
+    url: https://en.wikipedia.org/wiki/Milky_Way
+    title: Milky Way - Wikipedia
+    snippet: The Milky Way is a barred spiral galaxy with a D25 isophotal diameter estimated at 26.8 ± 1.1 kiloparsecs (87,400 ± 3,600 light-years), but only about 1,000 ...
+    ]
+
+    Relevant (Y/N)? N
+    Result 2
+    [
+    url: https://www.milkywaybar.com/
+    title: Explore MILKY WAY® Official Website | Chocolate Bars
+    snippet: Explore MILKY WAY® Bar products and nutrition information, fun facts about the oh so stretchy caramel chocolate bar, social media channels, and much more!
+    ]
+
+    Relevant (Y/N)? Y
+    Result 3
+    [
+    url: https://science.nasa.gov/resource/the-milky-way-galaxy/
+    title: The Milky Way Galaxy - NASA Science
+    snippet: Nov 8, 2017 ... The Milky Way's elegant spiral structure is dominated by just two arms wrapping off the ends of a central bar of stars.
+    ]
+
+    Relevant (Y/N)? N
+    Result 4
+    [
+    url: https://www.milkywayla.com/
+    title: Milky Way LA Restaurant Los Angeles
+    snippet: Opened in 1977 by Bernie & Leah (Spielberg) Adler, The Milky Way is a storied, family-owned restaurant located in the heart of the Pico-Robertson ...
+    ]
+
+    Relevant (Y/N)? N
+    Result 5
+    [
+    url: https://www.space.com/19915-milky-way-galaxy.html
+    title: Milky Way galaxy: Facts about our cosmic neighborhood | Space
+    snippet: Apr 18, 2023 ... Everything else in the galaxy revolves around this powerful gateway to nothingness. In its immediate surroundings is a tightly packed region of ...
+    ]
+
+    Relevant (Y/N)? N
+    Result 6
+    [
+    url: https://imagine.gsfc.nasa.gov/science/objects/milkyway1.html
+    title: NASA - The Milky Way Galaxy
+    snippet: The Milky Way is a large barred spiral galaxy. All the stars we see in the night sky are in our own Milky Way Galaxy.
+    ]
+
+    Relevant (Y/N)? N
+    Result 7
+    [
+    url: https://www.amnh.org/explore/ology/astronomy/the-milky-way-galaxy2
+    title: The Milky Way Galaxy | AMNH
+    snippet: The Milky Way is a huge collection of stars, dust and gas. It's called a spiral galaxy because if you could view it from the top or bottom, it would look like a ...
+    ]
+
+    Relevant (Y/N)? N
+    Result 8
+    [
+    url: https://www.nasa.gov/image-article/milky-way-on-the-horizon/
+    title: Milky Way on the Horizon - NASA
+    snippet: 2 days ago ... NASA astronaut Don Pettit used a camera with low light and long duration settings to capture this Jan. 29, 2025, image of the Milky Way ...
+    ]
+
+    Relevant (Y/N)? N
+    Result 9
+    [
+    url: https://www.milkywaypgh.com/
+    title: Milky Way Pittsburgh
+    snippet: Here at Milky Way, we pride ourselves on offering delicious Kosher alternatives to the essential pizzeria foods normally sold in a standard pizzeria.
+    ]
+
+    Relevant (Y/N)? N
+    Result 10
+    [
+    url: https://rowstercoffee.com/products/milky-way
+    title: Milky Way – Rowster Coffee
+    snippet: Roast Level: Medium - Dark Tasting Notes: Rich, Walnut, Sweet Description: Our flagship blend, showcases our range of roast profiles and ability to source ...
+    ]
+
+    Relevant (Y/N)? N
+    ======================
+    FEEDBACK SUMMARY
+    Query: milky way
+    Precision: 0.1
+    Still below the desired precision of 0.9
+    Indexing results ....
+    Augmenting by chocolate explore
+    Parameters:
+        Client key:  = GOOGLEAPIKEY
+        ENGINEKEY:  = ENGINEKEY
+        Query:       = milky way chocolate explore
+        Precision:   = 0.9
+        
+    Google Search Results:
+    ======================
+    Result 1
+    [
+    url: https://www.milkywaybar.com/
+    title: Explore MILKY WAY® Official Website | Chocolate Bars
+    snippet: Explore MILKY WAY® Bar products and nutrition information, fun facts about the oh so stretchy caramel chocolate bar, social media channels, and much more!
+    ]
+
+    Relevant (Y/N)? Y
+    Result 2
+    [
+    url: https://theochocolate.com/
+    title: Theo Chocolate
+    snippet: Lemon 45% Milk Chocolate Bar. Quick view Choose Options · Lemon 45% Milk ... From brownies to dipping chocolate - explore our favorite recipes. Learn More.
+    ]
+
+    Relevant (Y/N)? N
+    Result 3
+    [
+    url: https://chocolatebythebay.com/magazine/outsidechocolate/the-milky-way/
+    title: The Milky Way – Chocolate by the Bay
+    snippet: Feb 17, 2022 ... The TCHO classic milk chocolate bar describes itself as a creamy milk chocolate with caramel notes. (While I bought this bar in January 2022, it ...
+    ]
+
+    Relevant (Y/N)? N
+    Result 4
+    [
+    url: https://hukitchen.com/products/simple
+    title: Simple Milk Chocolate – Hu Kitchen
+    snippet: I love how creamy, smooth, and sweet this bar of chocolate is. The ingredients are top notch-- sweetened with coconut sugar. I love to chop up the simple ...
+    ]
+
+    Relevant (Y/N)? N
+    Result 5
+    [
+    url: https://www.gettyimages.com/photos/milky-way-chocolate
+    title: 74 Milky Way Chocolate Stock Photos, High-Res Pictures, and Images
+    snippet: Browse 74 authentic milky way chocolate stock photos, high-res images, and pictures, or explore additional chocolate bar or snickers stock images to find the ...
+    ]
+
+    Relevant (Y/N)? N
+    Result 6
+    [
+    url: https://la-explorer.com/enjoying-chocolate-tasting-ethel-m-chocolates/
+    title: Enjoying a Chocolate Tasting Class at Ethel M Chocolates - LA ...
+    snippet: Feb 14, 2018 ... The Milky Way? M&M's? All of these are made by Mars which began as a ... Either way, it's a great place to visit and I'll definitely be ...
+    ]
+
+    Relevant (Y/N)? N
+    Result 7
+    [
+    url: https://sweetnspicyliving.com/2022/09/21/video-explore-bc-canada-milky-way-trail-silver-star-resort/
+    title: [VIDEO] Explore BC Canada: Milky Way Trail @Silver Star Resort
+    snippet: Sep 21, 2022 ... Hey there! Few days ago, I've shared with you my hiking adventure at Apex Trail in Knox Mountain Park. The adventure doesn't stop there, ...
+    ]
+
+    Relevant (Y/N)? N
+    Result 8
+    [
+    url: https://press.umich.edu/Books/C/Chocolate-Woman-Dreams-the-Milky-Way2
+    title: Chocolate Woman Dreams the Milky Way | University of Michigan ...
+    snippet: Explore our publications and services. University of Michigan Press. Publishes award-winning books that advance humanities and social science fields, as well as ...
+    ]
+
+    Relevant (Y/N)? N
+    Result 9
+    [
+    url: https://www.justanswer.com/dog-health/2wzx2-one-dogs-ate-milky-bar-3-63-ounces-probably-w-i.html
+    title: Can Dogs Eat Milky Way Bars? Expert Answers and Advice
+    snippet: Dec 23, 2009 ... Explore All Categories ... Milk chocolate is actually not that toxic to dogs compared to other forms, and a Milky Way Bar is by no manner of means ...
+    ]
+
+    Relevant (Y/N)? N
+    Result 10
+    [
+    url: https://shop.joe.coffee/explore/stores/ac0122de-1336-4c32-bf14-6231215bdefb
+    title: Order Ahead - Joe Coffee
+    snippet: ... Milk, Espresso, Whip and Chocolate and Strawberry Drizzle. $5.50. Milky Way Mocha. Chocolate and Caramel Sauce, Steamed Milk, Espresso, Whip and Drizzle, Ice.
+    ]
+
+    Relevant (Y/N)? N
+    ======================
+    FEEDBACK SUMMARY
+    Query: milky way chocolate explore
+    Precision: 0.1
+    Still below the desired precision of 0.9
+    Indexing results ....
+    Augmenting by fun caramel
+    Parameters:
+        Client key:  = GOOGLEAPIKEY
+        ENGINEKEY:  = ENGINEKEY
+        Query:       = milky way chocolate explore fun caramel
+        Precision:   = 0.9
+        
+    Google Search Results:
+    ======================
+    Result 1
+    [
+    url: https://www.milkywaybar.com/
+    title: Explore MILKY WAY® Official Website | Chocolate Bars
+    snippet: Explore MILKY WAY® Bar products and nutrition information, fun facts about the oh so stretchy caramel chocolate bar, social media channels, and much more!
+    ]
+
+    Relevant (Y/N)? Y
+    Result 2
+    [
+    url: https://martinsfoods.com/groceries/candy-chocolate/chocolate-candy/packaged-chocolate-bars-candy/milky-way-chocolate-caramel-nougat-minis-candy-bar-fun-size-6-ct-336-oz-pkg.html
+    title: Save on Milky Way Chocolate Caramel & Nougat Minis Candy Bar ...
+    snippet: Save when you order Milky Way Chocolate Caramel & Nougat Minis Candy Bar Fun ... Call 1-800-551-9985 or visit us at www.milkywaybar.com. Please save the ...
+    ]
+
+    Relevant (Y/N)? Y
+    Result 3
+    [
+    url: https://www.milkywaybar.com/products/chocolate/milky-way-milk-chocolate-fun-size-candy-bars-336-oz-bag-pack-6-minisfun-size
+    title: MILKY WAY Milk Chocolate Fun Size Candy Bars, 3.36 oz Bag ...
+    snippet: Made with creamy caramel and smooth nougat, enrobed in rich milk chocolate in smaller fun size bars.
+    ]
+
+    Relevant (Y/N)? Y
+    Result 4
+    [
+    url: https://toffolo.medium.com/are-milky-ways-snickers-and-3-musketeers-really-just-the-same-thing-2a2ed6620c98
+    title: Are Milky Way, Snickers, and 3 Musketeers really just the same thing ...
+    snippet: Oct 12, 2020 ... ... chocolate coating resulted in the creation of the Milky Way. A nougat center candy to which Frank had added caramel. In 1924, the first year ...
+    ]
+
+    Relevant (Y/N)? Y
+    Result 5
+    [
+    url: https://www.jaycfoods.com/p/milky-way-simply-caramel-fun-size-chocolate-candy-bars/0004000050529
+    title: Milky Way Simply Caramel Fun Size Chocolate Candy Bars, 10.73 ...
+    snippet: Shop for Milky Way Simply Caramel Fun Size Chocolate Candy Bars (10.73 oz) at Jay C Food Stores. Find quality candy products to order online or add to your ...
+    ]
+
+    Relevant (Y/N)? Y
+    Result 6
+    [
+    url: https://chocolatebythebay.com/magazine/outsidechocolate/the-milky-way/
+    title: The Milky Way – Chocolate by the Bay
+    snippet: Feb 17, 2022 ... The TCHO classic milk chocolate bar describes itself as a creamy milk chocolate with caramel notes. ... interesting. With only 5 ...
+    ]
+
+    Relevant (Y/N)? N
+    Result 7
+    [
+    url: https://crazylittleprojects.com/milky-way-cookies/
+    title: Chocolate Milky Way Cookies Recipe
+    snippet: Aug 17, 2020 ... Chocolate cookies with bits of Milky Way mixed in for a soft and chewy, caramel and chocolate piece of heaven.
+    ]
+
+    Relevant (Y/N)? N
+    Result 8
+    [
+    url: https://www.weismarkets.com/shop/product/milky-way-chocolate-bar-creamy-caramel-fun-size/425547
+    title: Milky Way - Milky Way, Chocolate Bar, Creamy Caramel, Fun Size ...
+    snippet: Smooth nougat. Big bag. Mars real chocolate. www.milkywaybar.com. We value your questions or comments. Call 1-800-551-9985 or visit ...
+    ]
+
+    Relevant (Y/N)? Y
+    Result 9
+    [
+    url: https://spicedblog.com/chocolate-caramel-milky-way-cake/
+    title: Chocolate Caramel Milky Way Cake | Chocolate cake with caramel ...
+    snippet: Mar 10, 2014 ... coated in a thin layer of chocolate ganache…and topped with some of these Milky Way Bites of course! This delicious cake was fun to make, and ...
+    ]
+
+    Relevant (Y/N)? N
+    Result 10
+    [
+    url: https://www.carrsqc.com/shop/product-details.960568056.html
+    title: Milky Way Simply Caramel Fun Size Chocolate Bar Halloween ...
+    snippet: Shop Milky Way Simply Caramel Fun Size Chocolate Bar Halloween Candy - 10.73 Oz from carrsqc. Browse our wide selection of Chocolate for Delivery or Drive ...
+    ]
+
+    Relevant (Y/N)? Y
+    ======================
+    FEEDBACK SUMMARY
+    Query: milky way chocolate explore fun caramel
+    Precision: 0.7
+    Still below the desired precision of 0.9
+    Indexing results ....
+    Augmenting by size candy
+    Parameters:
+        Client key:  = GOOGLEAPIKEY
+        ENGINEKEY:  = ENGINEKEY
+        Query:       = milky way chocolate explore fun caramel size candy
+        Precision:   = 0.9
+        
+    Google Search Results:
+    ======================
+    Result 1
+    [
+    url: https://www.milkywaybar.com/products/chocolate/milky-way-milk-chocolate-fun-size-candy-bars-336-oz-bag-pack-6-minisfun-size
+    title: MILKY WAY Milk Chocolate Fun Size Candy Bars, 3.36 oz Bag ...
+    snippet: Made with creamy caramel and smooth nougat, enrobed in rich milk chocolate in smaller fun size bars.
+    ]
+
+    Relevant (Y/N)? Y
+    Result 2
+    [
+    url: https://www.jaycfoods.com/p/milky-way-simply-caramel-fun-size-chocolate-candy-bars/0004000050529
+    title: Milky Way Simply Caramel Fun Size Chocolate Candy Bars, 10.73 ...
+    snippet: Shop for Milky Way Simply Caramel Fun Size Chocolate Candy Bars (10.73 oz) at Jay C Food Stores. Find quality candy products to order online or add to your ...
+    ]
+
+    Relevant (Y/N)? Y
+    Result 3
+    [
+    url: https://www.milkywaybar.com/products/chocolate/milky-way-milk-chocolate-single-candy-bar-184-oz-bars
+    title: MILKY WAY Milk Chocolate Single Candy Bar, 1.84 oz | MILKY WAY®
+    snippet: Made with caramel and smooth nougat, enrobed in rich milk chocolate ... MILKY WAY ...
+    ]
+
+    Relevant (Y/N)? Y
+    Result 4
+    [
+    url: https://toffolo.medium.com/are-milky-ways-snickers-and-3-musketeers-really-just-the-same-thing-2a2ed6620c98
+    title: Are Milky Way, Snickers, and 3 Musketeers really just the same thing ...
+    snippet: Oct 12, 2020 ... ... fun-sized candy to hand out. (Side note: Why do they call it “fun ... [with] his father of covering a chocolate malted filling with a hard ...
+    ]
+
+    Relevant (Y/N)? Y
+    Result 5
+    [
+    url: https://martinsfoods.com/groceries/candy-chocolate/chocolate-candy/packaged-chocolate-bars-candy/milky-way-chocolate-caramel-nougat-minis-candy-bar-fun-size-6-ct-336-oz-pkg.html
+    title: Save on Milky Way Chocolate Caramel & Nougat Minis Candy Bar ...
+    snippet: Save when you order Milky Way Chocolate Caramel & Nougat Minis Candy Bar Fun Size ... Call 1-800-551-9985 or visit us at www.milkywaybar.com. Please save ...
+    ]
+
+    Relevant (Y/N)? Y
+    Result 6
+    [
+    url: https://www.amazon.com/Chocolate-Creamy-Caramel-Smooth-Nougat/dp/B0BS1Q2CMC
+    title: Yummy Chew Milky Way Chocolate Candy Bar Fun ... - Amazon.com
+    snippet: Amazon.com: Yummy Chew Milky Way Chocolate Candy Bar Fun Size, Creamy Caramel and Smooth Nougat, Bulk Pack – 2lbs. (55 Pieces) : Grocery & Gourmet Food.
+    ]
+
+    Relevant (Y/N)? Y
+    Result 7
+    [
+    url: https://martinsfoods.com/groceries/candy-chocolate/candy-variety-bags/mars-wrigley-caramel-lovers-assorted-fun-size-candy-55-ct-3343-oz-bag.html
+    title: Save on Mars Wrigley Caramel Lovers Assorted Fun Size Candy ...
+    snippet: Milky Way Fun Size Simply Caramel Bars: Milk Chocolate (Sugar, Cocoa Butter, Skim Milk, Chocolate, Lactose, Milkfat, Soy Lecithin, Artificial Flavor), Corn ...
+    ]
+
+    Relevant (Y/N)? Y
+    Result 8
+    [
+    url: https://www.foodsco.net/p/milky-way-fun-size-caramel-milk-chocolate-halloween-candy-bars-bag/0004000057290
+    title: Milky Way Fun Size Caramel Milk Chocolate Halloween Candy Bars ...
+    snippet: Shop for Milky Way Fun Size Caramel Milk Chocolate Halloween Candy Bars Bag (18.47 oz) at Foods Co.. Find quality candy products to add to your Shopping ...
+    ]
+
+    Relevant (Y/N)? Y
+    Result 9
+    [
+    url: https://www.ralphs.com/p/milky-way-fun-size-milk-chocolate-candy-bars-bag/0004000050527
+    title: Milky Way Fun Size Milk Chocolate Caramel Candy Bars ...
+    snippet: Shop for Milky Way Fun Size Milk Chocolate Caramel Candy Bars Individually Wrapped Bag (10.65 oz) at Ralphs. Find quality candy products to add to your ...
+    ]
+
+    Relevant (Y/N)? Y
+    Result 10
+    [
+    url: https://www.thuswesee.com/2016/09/ugly-truth-fun-size-candy-bars/
+    title: The Ugly Truth About "Fun-Size" Candy Bars - Thus We See...
+    snippet: Sep 25, 2016 ... Or finding a Snickers bar that has shrunk to the size of a Kraft caramel. ... fun-size Milky Ways to equal a normal size candy bar. 20 for a king ...
+    ]
+
+    Relevant (Y/N)? N
+    ======================
+    FEEDBACK SUMMARY
+    Query: milky way chocolate explore fun caramel size candy
+    Precision: 0.9
+    Desired precision reached, done
