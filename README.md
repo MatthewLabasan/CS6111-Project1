@@ -70,6 +70,7 @@ Our query-expansion algorithm is based on the tf-idf scoring system. The tf-idf 
 
 Our query-word order algorithm is based on the use of bigrams that are present in the relevant document corpus. We worked on two versions of reordering the query – functions insert_keywords and insert_keywords_v2. We ended up using `insert_keywords` but left the `insert_keywords_v2` function for reference
 1. `insert_keywords`:
+
     This method will insert keywords based on present bigrams. Keywords will only be inserted at the start or end of the query since it is assumed that the original user query is in the correct order (we don’t want to risk modification of this order). The logic is below:
     - We get all the bigrams from the document corpus provided (relevant corpus) using the nltk library – methods `word_tokenize()` and `bigrams()`. It is worthy to note that the `word_tokenize()` method does not ignore punctuation.
     - If we have more than 1 keyword:
