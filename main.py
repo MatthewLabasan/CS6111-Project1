@@ -330,6 +330,7 @@ def main():
     query = sys.argv[4]
   except Exception as e:
     print("Usage: python main.py <API Key> <Engine Key> <Precision> <Query>")
+    sys.exit(1)
 
   # Relevance Loop
   result_precision = -1
